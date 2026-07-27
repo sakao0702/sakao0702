@@ -296,18 +296,32 @@ return;
 
 }
 
+let exist = foods.find(food=>food.name===name);
+
+
+if(exist){
+
+    exist.count++;
+
+    total += kcal;
+
+
+}else{
 
 foods.push({
 
 name:name,
 
-kcal:kcal
+kcal:kcal,
+
+count:1
 
 });
 
 
 total+=kcal;
 
+}
 
 updateGauge();
 
@@ -380,15 +394,28 @@ function display(){
         <div>
         ${food.name}<br>
 
-        ${food.kcal} kcal
+        ${food.count}個 × ${food.kcal} kcal<br>
+
+        合計 ${food.count * food.kcal} kcal
         </div>
 
-        
-        <button class="delete" onclick="deleteFood(${index})">
 
-        削除
+        <div>
 
+        <button class="plus" onclick="addFood(${index})">
+        ＋1個
         </button>
+
+        <button class="minus" onclick="removeFood(${index})">
+        −1個
+        </button>
+
+        <button class="delete" onclick="deleteFood(${index})">
+        削除
+        </button>
+
+        </div>
+
 
         </div>
 
@@ -398,9 +425,10 @@ function display(){
 
 }
 
+
 function deleteFood(index){
 
-    total -= foods[index].kcal;
+    total -= foods[index].kcal* foods[index].count;
 
     foods.splice(index,1);
 
@@ -417,7 +445,7 @@ function resetFood(){
 foods=[];
 
 total=0;
-
+    
 document.getElementById("bar").style.background="#4caf50";
 
 updateGauge();
@@ -426,5 +454,40 @@ display();
 
 }
 
+function addFood(index){
+
+    foods[index].count++;
+
+    total += foods[index].kcal;
+
+    updateGauge();
+
+    display();
+
+}
+
+
+function removeFood(index){
+
+    if(foods[index].count > 1){
+
+        foods[index].count--;
+
+        total -= foods[index].kcal;
+
+    }else{
+
+        total -= foods[index].kcal;
+
+        foods.splice(index,1);
+
+    }
+
+
+    updateGauge();
+
+    display();
+
+}
 
 
