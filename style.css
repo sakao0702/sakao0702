@@ -143,3 +143,16 @@ background:#e53935;
 color:white;
 
 }
+
+#menuButtons button small{
+
+display:block;
+
+font-size:13px;
+
+color:#e8f5e9;
+
+margin-top:3px;
+
+}
+
