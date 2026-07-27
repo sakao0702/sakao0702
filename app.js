@@ -364,36 +364,48 @@ document.getElementById("bar").style.background =
 
 // 履歴
 
+
 function display(){
 
-let list=document.getElementById("list");
+    let list=document.getElementById("list");
 
+    list.innerHTML="";
 
-list.innerHTML="";
+    foods.forEach((food,index)=>{
 
+        list.innerHTML+=`
 
-foods.forEach(food=>{
+        <div class="food">
 
+        ${food.name}<br>
 
-list.innerHTML+=`
+        ${food.kcal} kcal<br>
 
-<div class="food">
+        <button class="delete" onclick="deleteFood(${index})">
 
-${food.name}
+        削除
 
-<br>
+        </button>
 
-${food.kcal} kcal
+        </div>
 
-</div>
+        `;
 
-`;
-
-});
-
+    });
 
 }
 
+function deleteFood(index){
+
+    total -= foods[index].kcal;
+
+    foods.splice(index,1);
+
+    updateGauge();
+
+    display();
+
+}
 
 
 
@@ -411,4 +423,14 @@ display();
 
 }
 
+.delete{
+
+background:#e53935;
+color:white;
+border:none;
+border-radius:5px;
+padding:5px;
+margin-top:5px;
+
+}
 
