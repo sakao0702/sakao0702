@@ -39,6 +39,8 @@ button{
 
 width:100%;
 
+box-sizing:border-box;
+
 padding:10px;
 
 margin:5px 0;
