@@ -124,13 +124,31 @@ document.getElementById("menuButtons");
 function showMainMenu(){
 
 menuButtons.innerHTML="";
+    
+let colors={
 
+"🍙 おにぎり":"#ffb74d",
+"🍜 ラーメン":"#ef5350",
+"🍱 定食":"#66bb6a",
+"🍛 ご飯もの":"#ffca28",
+"🍝 麺類":"#42a5f5",
+"🍣 寿司・海鮮":"#26c6da",
+"🍔 ファストフード":"#ab47bc",
+"🥗 おかず":"#8bc34a",
+"🍞 パン":"#a1887f",
+"🍰 お菓子飲料":"#ec407a"
+
+};
 
 for(let category in menus){
 
 let btn=document.createElement("button");
 
 btn.textContent=category;
+
+//カテゴリー色を設定
+btn.style.background=colors[category];
+
 
 
 btn.onclick=function(){
@@ -302,38 +320,45 @@ display();
 
 // ゲージ更新
 
+
 function updateGauge(){
 
+let remain = target - total;
 
-let remain=target-total;
-
-
-if(remain<0){
-
-remain=0;
-
-}
+let percent = (remain / target) * 100;
 
 
+if(percent < 0){
 
-let percent=(remain/target)*100;
-
-
-
-document.getElementById("bar").style.width=
-
-percent+"%";
-
-
-
-document.getElementById("remain").textContent=
-
-"残り "+Math.floor(remain)+" kcal";
-
-
+percent = 0;
 
 }
 
+
+document.getElementById("bar").style.width =
+percent + "%";
+
+
+if(remain < 0){
+
+document.getElementById("remain").textContent =
+"食べすぎ " + Math.abs(Math.floor(remain)) + " kcal";
+
+document.getElementById("bar").style.background =
+"#e53935";
+
+
+}else{
+
+document.getElementById("remain").textContent =
+"残り " + Math.floor(remain) + " kcal";
+
+document.getElementById("bar").style.background =
+"#4caf50";
+
+}
+
+}
 
 
 
@@ -377,6 +402,8 @@ function resetFood(){
 foods=[];
 
 total=0;
+
+document.getElementById("bar").style.background="#4caf50";
 
 updateGauge();
 
