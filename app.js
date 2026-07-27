@@ -377,10 +377,13 @@ function display(){
 
         <div class="food">
 
+        <div>
         ${food.name}<br>
 
-        ${food.kcal} kcal<br>
+        ${food.kcal} kcal
+        </div>
 
+        
         <button class="delete" onclick="deleteFood(${index})">
 
         削除
