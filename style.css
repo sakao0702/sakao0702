@@ -125,16 +125,16 @@ border-radius:8px;
 
 
 .food{
+    background:#eee;
+    margin-top:5px;
+    padding:8px;
+    border-radius:5px;
 
-background:#eee;
-
-margin-top:5px;
-
-padding:8px;
-
-border-radius:5px;
-
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
+
 
 
 
@@ -159,12 +159,15 @@ margin-top:3px;
 }
 
 .delete{
+    width:auto;
+    padding:5px 10px;
+    margin:0;
+
     background:#e53935;
     color:white;
     border:none;
     border-radius:5px;
-    padding:5px;
-    margin-top:5px;
-    width:auto;
+
+    font-size:12px;
     cursor:pointer;
 }
