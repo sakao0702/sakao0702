@@ -423,14 +423,5 @@ display();
 
 }
 
-.delete{
 
-background:#e53935;
-color:white;
-border:none;
-border-radius:5px;
-padding:5px;
-margin-top:5px;
-
-}
 
