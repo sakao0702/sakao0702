@@ -173,25 +173,26 @@ showMainMenu();
 menuButtons.appendChild(back);
 
 
-
 for(let food in menus[category]){
 
-let btn=document.createElement("button");
+    let btn=document.createElement("button");
 
+    btn.innerHTML = `
+        ${food}<br>
+        <small>${menus[category][food]} kcal</small>
+    `;
 
-btn.textContent=food;
+    btn.onclick=function(){
 
+        eat(food,menus[category][food]);
 
-btn.onclick=function(){
+    };
 
-eat(food,menus[category][food]);
-
-};
-
-
-menuButtons.appendChild(btn);
+    menuButtons.appendChild(btn);
 
 }
+
+
 
 }
 
